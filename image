@@ -1,0 +1,6 @@
+import PIL
+from PIL import Image
+# open method used to open different extension image file 
+im = Image.open(r"C:\Users\Admin\Desktop\opencv\photo.jpeg") 
+im.show()
+print(im.size)
