@@ -1,0 +1,13 @@
+Five friends with surname Panwala, Letterwala, Talawala, Chunawala and Radhiwala have their first name and middle name as follow.
+Four of them have a first and middle name of Verma.
+Three of them have a first and middle name of Kanta.
+Two of them have a first and middle name of Rajesh.
+One of them has a first and middle name of Kiash.
+Letterwala and Talawala, either both are named Kanta or neither is named Kanta. Either Panwala and Letterwala both are named Rajesh or Talawala and Chunawala both are named Rajesh. Chunawala and Radhiwala are not both named Verma. Who is named Kiash?
+
+
+Answer:
+From (1) and (7), it is clear that Panwala, Letterwala and Talawala are named Verma.
+From (6) and (5), if Letterwala or Talawala both are named Kanta, then either of them will have three names i.e. Verma, Kanta and Rajesh.
+Hence, Letterwala and Talawala both are not named Kanta. It means that Panwala, Chunawala and Radhiwala are named Kanta. 
+Now it is clear that Talawala and Chunawala are named Rajesh. Also, Letterwala is named Kiash.
