@@ -13,9 +13,9 @@ Therefore, neither Mr. R nor Mr. J is the brakeman's nearest neighbor, so it mus
 b) S beats the fireman at badminton and the passenger whose name is the same as the brakeman's lives in Noida. Mr. R lives in Dehradun and Mr. S lives between Noida and Dehradun. Therefore, it must be Mr. J who lives in Noida and J is the brakeman.
 c) S is not the brakeman and he is not the fireman. He must be the engineer.
 Name	City      	        Occupation	 Earning
-S     Noida	              Engineer	      -
-R	    Dehradun	          Fireman	        -
-J	B/w Noida & Dehradun	  Brakeman	      -
-Mr. S	B/w Noida & Dehradun	 	-            -
-Mr. J	Noida	 	                -        4,00,000
-Mr. R	Dehradun	 	            -           -
+S     Noida	              Engineer	        
+R	    Dehradun	          Fireman	          
+J	B/w Noida & Dehradun	  Brakeman	        
+Mr. S	B/w Noida & Dehradun                  
+Mr. J	Noida	 	                          4,00,000
+Mr. R	Dehradun	 	 
