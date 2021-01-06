@@ -7,7 +7,7 @@ The brakeman's nearest neighbor, one of the passengers, earns exactly three time
 S beats the fireman in badminton.
 The passenger whose name is the same as the brakeman's lives in Noida.
 
-
+Answer:
 a) Mr. R lives in Dehradun and the brakeman's nearest neighbor earns exactly 3 times as much as the brakeman.
 Therefore, neither Mr. R nor Mr. J is the brakeman's nearest neighbor, so it must be Mr. S.
 b) S beats the fireman at badminton and the passenger whose name is the same as the brakeman's lives in Noida. Mr. R lives in Dehradun and Mr. S lives between Noida and Dehradun. Therefore, it must be Mr. J who lives in Noida and J is the brakeman.
