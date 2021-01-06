@@ -1,0 +1,16 @@
+The President decides to give a prisoner, who is about to be sentenced to death, one last chance to live.
+There are 2 doors, one - the life door and the other - the death door. There is one security person standing by each door, who knows about the doors.
+However, one of them always tells the truth and the other always tells a lie.
+There is no way to identify which door is the life door and which is the death door. 
+There is no way to distinguish which security person is telling the truth.
+The prisoner can only ask only one question from any of the security person. After this he needs to choose a door.
+If he walks in the death door, then he will be executed. If he walks in the life door, he will get a life. He did choose the life door and lived. 
+What was the question he asked? How did he choose the door after he got the answer from one of the security person?
+
+
+
+Answer:
+Assume the security person X is by door X and the other person is by door Y. 
+Let the prisoner go to person X and asks this question "If I ask person Y what door is door Y, then what will be answer given by him: life door or death door?"
+If the answer is life door (door X), he can walk in the door Y. If the answer is death door (door Y), he can choose the door Y and walk in.
+ This is because the question goes through 2 levels of questions from 2 people. The overall answer will be always a lie because there is always one person lying and the other telling the truth.
