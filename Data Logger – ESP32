@@ -1,0 +1,61 @@
+Step 1: Required Components
+  ESP8266 Module x 1
+  Arduino Uno Board x 1
+  3.3V Linear Voltage Regulator (LD1117) x 1
+  Breadboard x 1
+  Jumper Wires
+
+Step 2: Circuit Time
+  Make a circuit as per the given diagram after uploading the program.
+  Connect the RX pin of ESP8266 to the TX pin of Arduino and TX pin of ESP8266 to the RX pin of Arduino. 
+  Also, common both Grounds of ESP8266 and Arduino as per diagram.
+  
+Step 3: Code Time
+  These are two codes for ESP8266 and Arduino board.
+  Code for Sender ESP8266
+  This is code for Sender ESP8266. First included the SoftwareSerial Library and started SoftwareSerial at RX and TX pin. 
+  (pin no 3 and 1) In Setup, SoftwareSerial is started at 9600 Baud. In the loop, written ‘123’ to the Serial.
+  
+  #include<SoftwareSerial.h> //Included SoftwareSerial Library
+//Started SoftwareSerial at RX and TX pin of ESP8266/NodeMCU
+SoftwareSerial s(3,1);
+
+void setup() {
+  //Serial S Begin at 9600 Baud
+  s.begin(9600);
+}
+
+void loop() {
+  //Write '123' to Serial
+  s.write(123);
+  delay(1000);
+}
+
+Code for Receiver Arduino
+This is code for Receiver Arduino. First declared a variable to store received data. In Setup, Serial Begin at 9600 Baud.
+In the loop, read the serial data and store it in a variable.
+
+int data; //Initialized variable to store recieved data
+
+void setup() {
+  //Serial Begin at 9600 Baud 
+  Serial.begin(9600);
+}
+
+void loop() {
+  data = Serial.read(); //Read the serial data and store it
+  delay(1000);
+}
+Step 4: Upload the code
+  Upload the code to ESP8266 and Arduino Board. Make a circuit as per the given diagram after uploading code. 
+  ‘123’ will be transmitted from Sender ESP8266 to Receiver Arduino. You can transmit your data or variable like this.
+
+
+
+
+
+
+
+
+
+
