@@ -1,0 +1,189 @@
+CoAP Server and communication setup
+
+
+//Include Libraries
+
+#include <ESP8266WiFi.h>         //Include the ESP8266 library to connect the server to the WIFI
+
+#include <coap_server.h>            //Include the CoAP server library to connect the server using CoAP protocol
+
+
+/*
+
+ * Callback Function Declaration: This is a callback function, whenver server receives any get or put request, 
+
+ * the server responses accordingly through this function.
+
+ * This Function takes the packet (Message), IP address & port of the CoAP client & observe the request on
+ the particular service.
+
+ */
+
+void Light_control(coapPacket &packet, IPAddress ip, int port, int obs);
+
+
+//Create an instance of CoAP server
+
+coapServer coap;
+
+
+/*
+
+ * Access point SSID & PASSWORD
+
+ * Change this according to the network
+
+  */
+
+const char* SSID_of_Router = "NOT UR WIFI";
+
+const char* PASSWORD_of_Router = "marketing";
+
+
+//Connect LED to the GPIO2 of ESP8266 & for reading the led state at the client end,
+ initialize the Variable for it.
+
+int light = 2;
+
+bool Light_state;
+
+
+//Define the Callback function
+
+void light_control(coapPacket *packet, IPAddress ip, int port, int obs) {
+
+
+  char p[packet->payloadlen + 1];
+
+  memcpy(p, packet->payload, packet->payloadlen);
+
+  p[packet->payloadlen] = NULL;
+
+  Serial.println(p);
+
+
+  String message(p);
+
+
+  if (message.equals("0"))
+
+  {
+
+    digitalWrite(light, LOW);
+
+    Serial.println("light is OFF");
+
+  }
+
+  else if (message.equals("1")) {
+
+  
+
+    digitalWrite(light, HIGH);
+
+    Serial.println("light is ON");
+
+  }
+
+  
+
+  char *Room_light = (digitalRead(light) > 0) ? ((char *) "1") : ((char *) "0");
+
+
+  //The server look for the observe flag or GET request from the client
+
+  if (obs == 1){
+
+    coap.sendResponse(Room_light);
+
+    }
+
+  else{
+
+    coap.sendResponse(ip, port, Room_light);
+
+    }
+
+}
+
+
+void setup() {
+
+  yield();
+
+  
+
+  //Start the serial Monitor at specified baud Rate as ESP8266 needs 115200 buad
+ rate to communicate using serial
+
+  Serial.begin(115200);
+
+
+  //Initiate the connection of ESP8266 to the Router
+
+  WiFi.begin(SSID_of_Router, PASSWORD_of_Router);
+
+  Serial.println(" ");
+
+  Serial.print("Connecting to...... ");
+
+  Serial.println(SSID_of_Router);
+
+
+  //Wait for the connection establishment
+
+  while (WiFi.status() != WL_CONNECTED) {
+
+    yield();
+
+    Serial.print(".");
+
+  }
+
+  Serial.println("");
+
+  
+
+  //If ESP8266 Wi-Fi is connected to the Router then 
+
+  //we will see the IP address assigned to the ESP8266
+
+  Serial.println("WiFi connected");
+
+  Serial.println(WiFi.localIP());
+
+
+  
+
+  pinMode(light, OUTPUT);
+
+  digitalWrite(light, HIGH);
+
+  Light_state = true;
+
+
+  // add server url endpoints.
+
+  // We can add multiple endpoint urls.
+
+  coap.server(light_control, "Room_light");
+
+
+  //Initiate the Connection of ESP8266 as a CoAP server & the port on 
+which server is listening.
+
+  coap.start();
+
+  coap.start(1234);
+
+}
+
+
+void loop() {
+
+  coap.loop();
+
+  delay(1000);
+
+}
+
